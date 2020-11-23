@@ -5,6 +5,10 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour {
 	float destroyTime = 0f; // 총알이 사라지는데 걸리는 시간
 	string bulletName;
+	void OnEnable()
+	{
+		destroyTime = 0f;
+	}
 	void Start() {
 		bulletName = gameObject.name;
 	}
@@ -24,7 +28,6 @@ public class BulletManager : MonoBehaviour {
 	}
 	void bulletActiveFalse() {
 		gameObject.SetActive(false);
-		destroyTime = 0f;
 	}
 	
 	void OnTriggerEnter(Collider other) {
@@ -34,7 +37,6 @@ public class BulletManager : MonoBehaviour {
 		}
 		else if (bulletName == "PlayerBullet(Clone)" && other.tag == "Enemy") // 적을 맞췄을때
 		{
-			other.gameObject.SetActive(false);
 			bulletActiveFalse();
 		}
 	}

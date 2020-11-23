@@ -15,6 +15,7 @@ TagManager:
   - PlayerRay
   - Rocket
   - Item
+  - Trigger
   layers:
   - Default
   - TransparentFX

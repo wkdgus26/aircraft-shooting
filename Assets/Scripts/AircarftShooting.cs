@@ -25,20 +25,9 @@ public class AircarftShooting : MonoBehaviour {
 	void Shoot() { // 공격
 		if (Input.GetKey(KeyCode.A)&& fireRate > 0.3f) {
 			fireRate = 0;
-			if (GameManager.instance.bulletNum > 1) // 기본 2발
-			{
-				setBulletPosition(0);
-				setBulletPosition(1);
-			}
-			if (GameManager.instance.bulletNum > 3) // 4발
-			{
-				setBulletPosition(2);
-				setBulletPosition(3);
-			}
-			if (GameManager.instance.bulletNum > 5) // 6발
-			{
-				setBulletPosition(4);
-				setBulletPosition(5);
+			for(int i=0; i<GameManager.instance.bulletNum; i++)
+            {
+				setBulletPosition(i);
 			}
 		}
 	}
@@ -46,14 +35,4 @@ public class AircarftShooting : MonoBehaviour {
 		pBullet[index] = objectPool.MakePool("playerBullet");
 		pBullet[index].transform.position = bulletPosition[index].transform.position;
 	}
-
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.tag == "Item")
-		{
-			other.gameObject.SetActive(false);
-			GameManager.instance.bulletNum += 2;
-		}
-	}
-	
 }

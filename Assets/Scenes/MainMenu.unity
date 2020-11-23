@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 71518625}
   - component: {fileID: 71518624}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 381, y: -847}
-  m_SizeDelta: {x: 65.8, y: 54.2}
+  m_SizeDelta: {x: 130, y: 54.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &236174168
 MonoBehaviour:
@@ -409,7 +409,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 522849147}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -628,7 +628,6 @@ RectTransform:
   - {fileID: 1717849103}
   - {fileID: 1783374826}
   - {fileID: 236174167}
-  - {fileID: 1340556189}
   - {fileID: 397224664}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -766,52 +765,6 @@ Material:
     - _MaskCoord: {r: 0, g: 0, b: 100000, a: 100000}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
---- !u!1001 &1340556188
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 522849147}
-    m_Modifications:
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -837
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777443298704754, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4a459eea22476df4ba7f5a5f84c14974, type: 2}
-  m_IsPrefabAsset: 0
---- !u!4 &1340556189 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 1340556188}
 --- !u!1 &1592507311
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +907,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1P
+  m_Text: SINGLE
 --- !u!222 &1699849649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1051,7 +1004,7 @@ GameObject:
   - component: {fileID: 1717849105}
   - component: {fileID: 1717849104}
   m_Layer: 5
-  m_Name: 2P
+  m_Name: Multi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,7 +1027,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -145}
-  m_SizeDelta: {x: 99.2, y: 54.7}
+  m_SizeDelta: {x: 130, y: 54.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717849104
 MonoBehaviour:
@@ -1197,7 +1150,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 16, y: -450}
-  m_SizeDelta: {x: 98.4, y: 58.7}
+  m_SizeDelta: {x: 130, y: 58.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783374827
 MonoBehaviour:
@@ -1337,7 +1290,7 @@ GameObject:
   - component: {fileID: 1846116745}
   - component: {fileID: 1846116744}
   m_Layer: 5
-  m_Name: 1P
+  m_Name: Single
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1360,7 +1313,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.69997, y: 175}
-  m_SizeDelta: {x: 97.8, y: 55.3}
+  m_SizeDelta: {x: 130, y: 55.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1846116744
 MonoBehaviour:
@@ -1577,7 +1530,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2P
+  m_Text: MULTI
 --- !u!222 &1967030519
 CanvasRenderer:
   m_ObjectHideFlags: 0

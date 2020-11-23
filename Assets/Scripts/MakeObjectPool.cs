@@ -7,26 +7,37 @@ public class MakeObjectPool : MonoBehaviour {
 	public GameObject playerBullet;
 	public GameObject enemyBullet;
 	public GameObject enemy;
+	public GameObject item;
 	GameObject[] playerBullets;
 	GameObject[] enemyBullets;
 	GameObject[] enemies;
+	GameObject[] items;
 	GameObject[] tempPool;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		playerBullets = new GameObject[80];
 		enemyBullets = new GameObject[80];
 		enemies = new GameObject[30];
+		items = new GameObject[10];
 		for (int i = 0; i < playerBullets.Length; i++)
 		{
 			playerBullets[i] = Instantiate(playerBullet);
+			playerBullets[i].transform.SetParent(GameObject.Find("ObjectPool").transform);
 		}
 		for (int i = 0; i < enemyBullets.Length; i++)
 		{
 			enemyBullets[i] = Instantiate(enemyBullet);
+			enemyBullets[i].transform.SetParent(GameObject.Find("ObjectPool").transform);
 		}
 		for (int i = 0; i < enemies.Length; i++)
 		{
 			enemies[i] = Instantiate(enemy);
+			enemies[i].transform.SetParent(GameObject.Find("ObjectPool").transform);
+		}
+		for (int i = 0; i < items.Length; i++)
+		{
+			items[i] = Instantiate(item);
+			items[i].transform.SetParent(GameObject.Find("ObjectPool").transform);
 		}
 	}
 
@@ -40,10 +51,13 @@ public class MakeObjectPool : MonoBehaviour {
             case "enemyBullet":
                 tempPool = enemyBullets;
                 break;
-            case "enemy":
-                tempPool = enemies;
-                break;
-        }
+			case "enemy":
+				tempPool = enemies;
+				break;
+			case "item":
+				tempPool = items;
+				break;
+		}
         for (int i = 0; i < tempPool.Length; i++)
         {
             if (!tempPool[i].activeSelf)
