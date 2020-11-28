@@ -19,7 +19,7 @@ public class BulletManager : MonoBehaviour {
 		destroyTime += Time.deltaTime;
 		if (bulletName == "PlayerBullet(Clone)") //플레이어 bullet
 		{
-			gameObject.transform.position += Vector3.up * 40f * Time.deltaTime;
+			gameObject.transform.position += Vector3.up * 100f * Time.deltaTime;
 		}
 		else //적 bullet
 			gameObject.transform.position += Vector3.down * 40f * Time.deltaTime;
@@ -31,12 +31,13 @@ public class BulletManager : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider other) {
-		if (bulletName == "EnemyBullet(Clone)" && other.tag == "Player")// 적총알에 맞았을때
+		//if (bulletName == "EnemyBullet(Clone)" && other.tag == "Player")// 적총알에 맞았을때
+		//{
+		//	bulletActiveFalse();
+		//}
+		if (bulletName == "PlayerBullet(Clone)" && other.tag == "Enemy") // 적을 맞췄을때
 		{
-			bulletActiveFalse();
-		}
-		else if (bulletName == "PlayerBullet(Clone)" && other.tag == "Enemy") // 적을 맞췄을때
-		{
+			GameManager.instance.score += 10;
 			bulletActiveFalse();
 		}
 	}

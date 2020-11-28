@@ -95,7 +95,7 @@ public class Wave : MonoBehaviour {
         {
             pathPositions[i] = path[i].position;
         }
-        Vector3[] newPathPositions = CreatePoints(pathPositions);
+        Vector3[] newPathPositions = CreatePoints(pathPositions); //
         Vector3 previosPositions = Interpolate(newPathPositions, 0);
         Gizmos.color = pathColor;
         int SmoothAmount = path.Length * 20;

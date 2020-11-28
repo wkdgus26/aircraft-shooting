@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AircraftHp : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public GameObject gameOverUI;
+	public GameObject[] playerHp;
+	void Update() {
+		GameOver();
 	}
 
+	void GameOver() {
+		if (GameManager.instance.hp <= 0)
+		{
+			gameObject.SetActive(false);
+			gameOverUI.SetActive(true);
+		}
+	}
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "EnemyBullet")// 적총알에 맞았을때
+		if (other.tag == "EBullet" || other.tag == "Enemy")// 적총알에 맞았을때
 		{
 			GameManager.instance.hp -= 1;
+			playerHp[GameManager.instance.hp].SetActive(false);
 			other.gameObject.SetActive(false);
 		}
-		else if (other.tag == "Enemy") // 적이랑 부딛힐때
+		else if (other.tag == "Item_Hp")
 		{
-			GameManager.instance.hp -= 1;
-			other.gameObject.SetActive(false);
+			if (GameManager.instance.hp < 3)
+			{
+				playerHp[GameManager.instance.hp].SetActive(true);
+				GameManager.instance.hp += 1;
+			}
+			Destroy(other.gameObject);
 		}
 	}
 }

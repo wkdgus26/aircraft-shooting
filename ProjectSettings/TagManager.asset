@@ -14,8 +14,11 @@ TagManager:
   - Coin
   - PlayerRay
   - Rocket
-  - Item
   - Trigger
+  - Item_Hp
+  - Item_Power
+  - PBullet
+  - EBullet
   layers:
   - Default
   - TransparentFX

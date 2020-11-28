@@ -12,7 +12,7 @@ public class AircarftShooting : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		pBullet = new GameObject[6];
+		pBullet = new GameObject[8];
 		//bulletPosition = new GameObject[6];
 	}
 	
@@ -23,16 +23,19 @@ public class AircarftShooting : MonoBehaviour {
 	}
 	
 	void Shoot() { // 공격
-		if (Input.GetKey(KeyCode.A)&& fireRate > 0.3f) {
+		if (Input.GetKey(KeyCode.A)&& fireRate > 0.2f) {
 			fireRate = 0;
-			for(int i=0; i<GameManager.instance.bulletNum; i++)
+			for (int i=0; i<GameManager.instance.bulletNum; i++)
             {
 				setBulletPosition(i);
 			}
 		}
 	}
+
+
 	void setBulletPosition(int index) { // 총알 위치 설정 
 		pBullet[index] = objectPool.MakePool("playerBullet");
 		pBullet[index].transform.position = bulletPosition[index].transform.position;
+		bulletPosition[index].GetComponent<ParticleSystem>().Play(); // 파티클 실행
 	}
 }

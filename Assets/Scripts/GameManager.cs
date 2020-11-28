@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour {
 	public int score = 0;
 	public static GameManager instance;
 	// Use this for initialization
-	void Awake () {
+	void Awake ()
+	{
+		Time.timeScale = 1;
 		if (instance == null)
 			instance = this;
 		else

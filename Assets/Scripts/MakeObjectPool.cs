@@ -7,18 +7,15 @@ public class MakeObjectPool : MonoBehaviour {
 	public GameObject playerBullet;
 	public GameObject enemyBullet;
 	public GameObject enemy;
-	public GameObject item;
 	GameObject[] playerBullets;
 	GameObject[] enemyBullets;
 	GameObject[] enemies;
-	GameObject[] items;
 	GameObject[] tempPool;
 	// Use this for initialization
 	void Awake () {
-		playerBullets = new GameObject[80];
+		playerBullets = new GameObject[150];
 		enemyBullets = new GameObject[80];
 		enemies = new GameObject[30];
-		items = new GameObject[10];
 		for (int i = 0; i < playerBullets.Length; i++)
 		{
 			playerBullets[i] = Instantiate(playerBullet);
@@ -34,11 +31,6 @@ public class MakeObjectPool : MonoBehaviour {
 			enemies[i] = Instantiate(enemy);
 			enemies[i].transform.SetParent(GameObject.Find("ObjectPool").transform);
 		}
-		for (int i = 0; i < items.Length; i++)
-		{
-			items[i] = Instantiate(item);
-			items[i].transform.SetParent(GameObject.Find("ObjectPool").transform);
-		}
 	}
 
 	public GameObject MakePool(string type)
@@ -53,9 +45,6 @@ public class MakeObjectPool : MonoBehaviour {
                 break;
 			case "enemy":
 				tempPool = enemies;
-				break;
-			case "item":
-				tempPool = items;
 				break;
 		}
         for (int i = 0; i < tempPool.Length; i++)
