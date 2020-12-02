@@ -13,7 +13,6 @@ public class AircarftShooting : MonoBehaviour {
 	void Start ()
 	{
 		pBullet = new GameObject[8];
-		//bulletPosition = new GameObject[6];
 	}
 	
 	// Update is called once per frame
@@ -23,7 +22,7 @@ public class AircarftShooting : MonoBehaviour {
 	}
 	
 	void Shoot() { // 공격
-		if (Input.GetKey(KeyCode.A)&& fireRate > 0.2f) {
+		if (Input.GetKey(KeyCode.A)&& fireRate > 0.3f) {
 			fireRate = 0;
 			for (int i=0; i<GameManager.instance.bulletNum; i++)
             {
@@ -31,8 +30,6 @@ public class AircarftShooting : MonoBehaviour {
 			}
 		}
 	}
-
-
 	void setBulletPosition(int index) { // 총알 위치 설정 
 		pBullet[index] = objectPool.MakePool("playerBullet");
 		pBullet[index].transform.position = bulletPosition[index].transform.position;

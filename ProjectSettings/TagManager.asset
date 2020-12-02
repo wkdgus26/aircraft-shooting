@@ -19,6 +19,7 @@ TagManager:
   - Item_Power
   - PBullet
   - EBullet
+  - Destroy
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,6 @@ public class MapScroll : MonoBehaviour {
 	public GameObject map;
 	public int speed = 10;
 	int index = 0;
-	BoxCollider col;
 	Vector3 rePosition;
 	// Use this for initialization
 	void Awake () {

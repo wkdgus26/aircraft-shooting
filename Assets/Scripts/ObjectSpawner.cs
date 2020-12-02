@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour {
 
-	float itemTime = 0f;
-	float enemyTime = 0f;
-	GameObject item;
+	public Transform[] curvePoint;
 	public GameObject item_power;
 	public GameObject item_hp;
 	public MakeObjectPool objectPool;
+	GameObject item;
+	float delayTime = 0f;
+	float itemTime = 0f;
+	float enemySpawnTime = 0f;
+	int ranEnemyNum;
+	int positiveNum;
+	bool isEnemySpawn = false;
+	bool isPositiveNum = false;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -19,10 +25,10 @@ public class ObjectSpawner : MonoBehaviour {
 	void ItemSpwan()
 	{
 		itemTime += Time.deltaTime;
-		if (itemTime > 3f)
+		if (itemTime > 10f)
 		{
 			itemTime = 0f;
-			if (Random.Range(0, 10) < 5)
+			if (Random.value >0.5)
 				item = item_power;
 			else
 				item = item_hp;
@@ -32,12 +38,39 @@ public class ObjectSpawner : MonoBehaviour {
 			itemPos.SetActive(true);
 		}
 	}
-	void EnemySpwan() {
-		enemyTime += Time.deltaTime;
-		if (enemyTime > 1.5f)
+	void EnemySpwan()
+	{
+		enemySpawnTime += Time.deltaTime; 
+		if (enemySpawnTime > 5f) // 5초마다 적생성, 루트 재생성
 		{
-			enemyTime = 0f;
-			GameObject enemyPos = objectPool.MakePool("enemy");
+			setRandomPoint();
+			isEnemySpawn = true;
+			ranEnemyNum = Random.Range(3, 6); 
+			enemySpawnTime = 0f;
 		}
+		if (isEnemySpawn)
+		{
+			delayTime += Time.deltaTime;
+			if (delayTime > 0.3f) // ranEnemyNum 만큼 enemy생셩
+			{
+				delayTime = 0f;
+				GameObject enemyPos = objectPool.MakePool("enemy");
+				ranEnemyNum -= 1;
+			}
+			if (ranEnemyNum == 0)
+				isEnemySpawn = false;
+		}
+	}
+
+	void setRandomPoint()
+	{
+		isPositiveNum = (Random.value >0.5);
+		if (isPositiveNum)
+			positiveNum = 1;
+		else
+			positiveNum = -1;
+		curvePoint[0].position = new Vector3(curvePoint[0].position.x * positiveNum, Random.Range(-25, 25), curvePoint[0].position.z);
+		curvePoint[1].position = new Vector3(Random.Range(-8, 8), Random.Range(-25, 25), curvePoint[1].position.z);
+		curvePoint[2].position = new Vector3(Random.Range(-12, 12), curvePoint[2].position.y, curvePoint[2].position.z);
 	}
 }

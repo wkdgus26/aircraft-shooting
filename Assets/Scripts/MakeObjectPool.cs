@@ -14,8 +14,8 @@ public class MakeObjectPool : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		playerBullets = new GameObject[150];
-		enemyBullets = new GameObject[80];
-		enemies = new GameObject[30];
+		enemyBullets = new GameObject[20];
+		enemies = new GameObject[20];
 		for (int i = 0; i < playerBullets.Length; i++)
 		{
 			playerBullets[i] = Instantiate(playerBullet);

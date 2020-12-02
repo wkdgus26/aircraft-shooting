@@ -5,6 +5,8 @@ using UnityEngine;
 public class AircraftHp : MonoBehaviour {
 	public GameObject gameOverUI;
 	public GameObject[] playerHp;
+	public GameObject explosionParticle;
+	public MeshRenderer m;
 	void Update() {
 		GameOver();
 	}
@@ -14,6 +16,9 @@ public class AircraftHp : MonoBehaviour {
 		{
 			gameObject.SetActive(false);
 			gameOverUI.SetActive(true);
+			//explosionParticle.SetActive(true);
+			//m.enabled = false;
+			//StartCoroutine(GameOverCoroutine());
 		}
 	}
 	void OnTriggerEnter(Collider other)
@@ -33,5 +38,11 @@ public class AircraftHp : MonoBehaviour {
 			}
 			Destroy(other.gameObject);
 		}
+	}
+
+	IEnumerator GameOverCoroutine()
+	{
+		yield return new WaitForSeconds(3f);
+		gameOverUI.SetActive(true);
 	}
 }
