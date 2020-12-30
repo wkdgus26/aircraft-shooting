@@ -5,16 +5,14 @@ using UnityEngine;
 public class ItemController : MonoBehaviour {
 
 	int speed; 
-	// Use this for initialization
 	void OnEnable() {
 		speed = Random.Range(-15, -40);
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		ItemMove();
+		ItemDrop(); // 아이템 움직임
 	}
-	void ItemMove()
+	void ItemDrop()
 	{
 		transform.Translate(new Vector3(0, speed, 0) * Time.deltaTime);
 	}
@@ -22,8 +20,8 @@ public class ItemController : MonoBehaviour {
 	{
 		if (gameObject.tag == "Item_Power"&&other.tag == "Player")
 		{
-			if (GameManager.instance.bulletNum < 8)
-				GameManager.instance.bulletNum += 2;
+			if (GameManager.instance.bulletCount < 8)
+				GameManager.instance.bulletCount += 2;
 			Destroy(gameObject);
 		}
 		if (other.tag == "Destroy")

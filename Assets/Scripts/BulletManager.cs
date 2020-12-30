@@ -39,11 +39,15 @@ public class BulletManager : MonoBehaviour
 		gameObject.SetActive(false);
 	}
 	
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider other)
+	{
 		if (bulletName == "PlayerBullet(Clone)" && other.tag == "Enemy") // 적을 맞췄을때
 		{
 			GameManager.instance.score += 10;
 			bulletActiveFalse();
 		}
+
+		if (bulletName == "EnemyBullet(Clone)" && other.tag == "Player") 
+			bulletActiveFalse();
 	}
 }

@@ -5,27 +5,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	public GameObject mainUI;
+	public GameObject rankUI;
+	void Start()
+	{
 	}
 	public void ButtonClick(string idx)
 	{
 		switch (idx)
 		{
-			case "1P":
+			case "Play":
 				SceneManager.LoadScene("PlayScene");
 				break;
-			case "2P":
-				Debug.Log("2");
-				break;
 			case "Rank":
-				Debug.Log("rank");
+				mainUI.SetActive(false);
+				rankUI.SetActive(true);
+				break;
+			case "Back":
+				rankUI.SetActive(false);
+				mainUI.SetActive(true);
 				break;
 			case "Exit":
 				Debug.Log("exit");

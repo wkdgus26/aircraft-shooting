@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4277178605203214}
-  - component: {fileID: 114994509626777174}
   m_Layer: 0
   m_Name: Enemy Explosion
   m_TagString: Untagged
@@ -164,18 +163,6 @@ Transform:
   m_Father: {fileID: 4722321558031592}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114994509626777174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1280240331523082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a8515ff1b32ecb498437becf714b57d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destructionTime: 3
 --- !u!198 &198104837752748660
 ParticleSystem:
   m_ObjectHideFlags: 1

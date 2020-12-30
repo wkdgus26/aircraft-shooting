@@ -16,7 +16,7 @@ public class ObjectSpawner : MonoBehaviour {
 	int positiveNum;
 	bool isEnemySpawn = false;
 	bool isPositiveNum = false;
-	// Update is called once per frame
+
 	void Update ()
 	{
 		ItemSpwan(); // 아이템 생성
@@ -54,7 +54,7 @@ public class ObjectSpawner : MonoBehaviour {
 			if (delayTime > 0.3f) // ranEnemyNum 만큼 enemy생셩
 			{
 				delayTime = 0f;
-				GameObject enemyPos = objectPool.MakePool("enemy");
+				objectPool.MakePool("enemy");
 				ranEnemyNum -= 1;
 			}
 			if (ranEnemyNum == 0)

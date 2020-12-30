@@ -8,12 +8,9 @@ public class MapScroll : MonoBehaviour {
 	public int speed = 10;
 	int index = 0;
 	Vector3 rePosition;
-	// Use this for initialization
 	void Awake () {
 		rePosition = gameObject.transform.GetChild(2).position;
 	}
-	
-	// Update is called once per frame
 	void Update () {
 		MapScrolling();
 	}

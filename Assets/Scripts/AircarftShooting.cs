@@ -5,13 +5,12 @@ using UnityEngine.Experimental.UIElements;
 
 public class AircarftShooting : MonoBehaviour {
 
-	GameObject[] pBullet;
-	public GameObject[] bulletPosition;
+	GameObject[] pBullet; // 플레이어 불릿
+	public GameObject[] bulletPosition; // 플레이어 불릿 위치
 	public float fireRate=0; // 재발사 시간
 	public MakeObjectPool objectPool;
 	// Use this for initialization
-	void Start ()
-	{
+	void Start () {
 		pBullet = new GameObject[8];
 	}
 	
@@ -22,9 +21,9 @@ public class AircarftShooting : MonoBehaviour {
 	}
 	
 	void Shoot() { // 공격
-		if (Input.GetKey(KeyCode.A)&& fireRate > 0.3f) {
+		if (Input.GetKey(KeyCode.A)&& fireRate > 0.2f) {
 			fireRate = 0;
-			for (int i=0; i<GameManager.instance.bulletNum; i++)
+			for (int i=0; i<GameManager.instance.bulletCount; i++)
             {
 				setBulletPosition(i);
 			}

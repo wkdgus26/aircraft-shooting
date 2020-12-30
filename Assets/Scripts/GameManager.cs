@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	public int bulletNum = 2; // 총알갯수
-	public int hp = 3;
-	public int score = 0;
 	public static GameManager instance;
+	public int bulletCount = 2; // 총알갯수
+	public int score = 0;
+	public GameObject player;
+	public GameObject gameOverUI; 
+	public GameObject playerExplosion;
+	public JsonManager jsonMgr;
+	
 	// Use this for initialization
 	void Awake ()
 	{
@@ -19,11 +23,16 @@ public class GameManager : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	public void GameOver() {
+		jsonMgr.DataAdd(score);
+		playerExplosion.transform.position = player.transform.position;
+		player.SetActive(false);
+		playerExplosion.SetActive(true);
+		StartCoroutine(GameOverCoroutine());
 	}
-	
-	
-
+	IEnumerator GameOverCoroutine()
+	{
+		yield return new WaitForSeconds(2f);
+		gameOverUI.SetActive(true);
+	}
 }

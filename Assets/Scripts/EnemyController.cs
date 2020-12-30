@@ -3,32 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
-	public BulletManager bulletMan;
+	public BulletManager bulletMgr;
 	public MakeObjectPool objectPool;
 	public Transform targetPos;
 	public int offset;
 	public float speed;
 	GameObject eBullet;
+	GameObject enemyExplosion;
 	Vector3 difference;
 	int enemyHp;
 	float ranFireNum;
 	float fireRate;
 	float rotationZ;
 	bool isFire = false;
-	// Use this for initialization
 	void OnEnable () {
+		enemyExplosion.SetActive(false);
 		enemyHp = 2;
 		ranFireNum =  Random.Range(0, 3);
 		fireRate = 0;
 		if (Random.value>0.4f)
 			isFire = true;
 	}
-	
-	// Update is called once per frame
+	void Awake() {
+		enemyExplosion = transform.parent.GetChild(1).gameObject;
+	}
 	void Update () {
 		SetRotation();
 		EnemyFire();
-		if(enemyHp==0)
+		if(enemyHp==0 && !enemyExplosion.activeSelf)
 			EnemyDie();
 	}
 	void SetRotation()
@@ -42,14 +44,16 @@ public class EnemyController : MonoBehaviour {
 		if (isFire&& fireRate >1f && fireRate > ranFireNum) {
 			isFire = false;
 			eBullet = objectPool.MakePool("enemyBullet"); // eBullet 생성 및 대입
-			bulletMan = eBullet.GetComponent<BulletManager>(); // 생성된 enemyBullet의 BulletManager script 정보
+			bulletMgr = eBullet.GetComponent<BulletManager>(); // 생성된 enemyBullet의 BulletManager script 정보
 			eBullet.transform.position = transform.position;
-			bulletMan.targetPos = transform.GetChild(0).transform.position;
-			bulletMan.originPos = transform.position;
+			bulletMgr.targetPos = transform.GetChild(0).transform.position;
+			bulletMgr.originPos = transform.position;
         }
     }
 	void EnemyDie()
 	{
+		enemyExplosion.transform.position = transform.position;
+		enemyExplosion.SetActive(true);
 		gameObject.SetActive(false);
 	}
 
@@ -62,7 +66,7 @@ public class EnemyController : MonoBehaviour {
 		}
 		if (other.tag == "Player")
 		{
-			gameObject.SetActive(false);
+			enemyHp = 0;
 		}
 	}
 }

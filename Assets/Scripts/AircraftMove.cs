@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class AircraftMove : MonoBehaviour {
 	public float speed = 0.1f;
-	public float test1 = 0f;
-	public float test2 = 1f;
-	// Use this for initialization
-	void Start () {
-	}
 	
-	// Update is called once per frame
 	void Update () {
-		Move();
-		Clamp();
+		Move(); // 움직임
+		Clamp(); // 화면제한
 	}
 	void Move()
-	{ // 움직임
+	{ 
 		if (Input.GetKey(KeyCode.LeftArrow))
 			transform.position += Vector3.left * speed * Time.deltaTime;
 		if (Input.GetKey(KeyCode.RightArrow))
@@ -27,7 +21,7 @@ public class AircraftMove : MonoBehaviour {
 			transform.position += Vector3.down * speed * Time.deltaTime;
 
 	}
-	void Clamp() // 화면제한
+	void Clamp() 
 	{
 		Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
 		if (pos.x < 0.13f) pos.x = 0.13f;

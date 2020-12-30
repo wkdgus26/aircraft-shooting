@@ -14,10 +14,9 @@ public class ObjectCurve : MonoBehaviour {
     }
     void Update()
     {
-
         if (transform.position == curvePoint[2].position)
         {
-            gameObject.SetActive(false);
+            transform.parent.gameObject.SetActive(false);
         }
         t += Time.deltaTime * speed;
         transform.position = BezierCurve(curvePoint[0].position, curvePoint[1].position, curvePoint[2].position, t);
@@ -39,6 +38,5 @@ public class ObjectCurve : MonoBehaviour {
         Gizmos.color = Color.white;
         for (int i = 0; i < curvePoint.Length; i++)
             Gizmos.DrawSphere(curvePoint[i].position, 0.5f);
-        
     }
 }

@@ -11,7 +11,6 @@ public class MakeObjectPool : MonoBehaviour {
 	GameObject[] enemyBullets;
 	GameObject[] enemies;
 	GameObject[] tempPool;
-	// Use this for initialization
 	void Awake () {
 		playerBullets = new GameObject[150];
 		enemyBullets = new GameObject[20];
