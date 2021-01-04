@@ -7,22 +7,23 @@ public class AircarftShooting : MonoBehaviour {
 
 	GameObject[] pBullet; // 플레이어 불릿
 	public GameObject[] bulletPosition; // 플레이어 불릿 위치
-	public float fireRate=0; // 재발사 시간
 	public MakeObjectPool objectPool;
-	// Use this for initialization
+	public float fireRate = 0.13f;
+	float fireRateTime = 0f; // 재발사 시간
+						// Use this for initialization
 	void Start () {
 		pBullet = new GameObject[8];
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		fireRate += Time.deltaTime;
+		fireRateTime += Time.deltaTime;
 		Shoot();
 	}
 	
 	void Shoot() { // 공격
-		if (Input.GetKey(KeyCode.A)&& fireRate > 0.2f) {
-			fireRate = 0;
+		if (Input.GetKey(KeyCode.A)&& fireRateTime > fireRate) {
+			fireRateTime = 0;
 			for (int i=0; i<GameManager.instance.bulletCount; i++)
             {
 				setBulletPosition(i);

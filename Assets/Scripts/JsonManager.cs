@@ -15,10 +15,12 @@ public class JsonManager : MonoBehaviour {
 	void Awake()
 	{
 		if (instance == null)
+		{
 			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
 		else
 			Destroy(gameObject);
-		DontDestroyOnLoad(gameObject);
 		DataLoad();
 	}
 	public void DataAdd(int data) {	// score 값을 받아서 배열에 넣으면서 정렬
@@ -41,15 +43,16 @@ public class JsonManager : MonoBehaviour {
 
 	public void DataLoad() {
 		string dataFilePath = Application.dataPath + "/Resources/ScoreData.json";
-		string dataFile = File.ReadAllText(dataFilePath); // json 파일 읽어서 저장
 		FileInfo fileInfo = new FileInfo(dataFilePath);
 		if (fileInfo.Exists) // 기존에 json파일이 있으면 load
+		{
+			string dataFile = File.ReadAllText(dataFilePath); // json 파일 읽어서 저장
 			scoreData = JsonUtility.FromJson<ScoreData>(dataFile); // json파일 정보를 scoreData에 입력
+		}
 		else // 기존에 json파일이 없으면 creat
 		{
-			scoreData.scoreArray = new int[] { 1000, 300, 100, 30, 10 };
+			scoreData.scoreArray = new int[] { 1000, 300, 100, 50, 20, 10 };
 			DataSave();
-			Debug.Log("creat data");
 		}
 	}
 }

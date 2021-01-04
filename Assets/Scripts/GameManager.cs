@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 	public GameObject gameOverUI; 
 	public GameObject playerExplosion;
-	public JsonManager jsonMgr;
 	
 	// Use this for initialization
 	void Awake ()
@@ -24,7 +23,8 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	public void GameOver() {
-		jsonMgr.DataAdd(score);
+		if(JsonManager.instance)
+			JsonManager.instance.DataAdd(score); // 데이터 전달
 		playerExplosion.transform.position = player.transform.position;
 		player.SetActive(false);
 		playerExplosion.SetActive(true);
