@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 	public int bulletCount = 2; // 총알갯수
 	public int score = 0;
+	public Text showScoreText;
 	public GameObject player;
 	public GameObject gameOverUI; 
 	public GameObject playerExplosion;
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	public void GameOver() {
-		if(JsonManager.instance)
+		if (JsonManager.instance)
 			JsonManager.instance.DataAdd(score); // 데이터 전달
 		playerExplosion.transform.position = player.transform.position;
 		player.SetActive(false);
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour {
 	IEnumerator GameOverCoroutine()
 	{
 		yield return new WaitForSeconds(2f);
+		showScoreText.gameObject.SetActive(false);
 		gameOverUI.SetActive(true);
 	}
 }

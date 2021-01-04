@@ -52,6 +52,9 @@ public class EnemyController : MonoBehaviour {
     }
 	void EnemyDie()
 	{
+		GameManager.instance.score += 10;
+		GameManager.instance.showScoreText.text = "SCORE : ";
+		GameManager.instance.showScoreText.text += GameManager.instance.score.ToString();
 		enemyExplosion.transform.position = transform.position;
 		enemyExplosion.SetActive(true);
 		gameObject.SetActive(false);
