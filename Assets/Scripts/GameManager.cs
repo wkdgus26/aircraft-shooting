@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	public void GameOver() {
-		if (JsonManager.instance)
-			JsonManager.instance.DataAdd(score); // 데이터 전달
 		playerExplosion.transform.position = player.transform.position;
 		player.SetActive(false);
 		playerExplosion.SetActive(true);
@@ -35,6 +33,8 @@ public class GameManager : MonoBehaviour {
 	IEnumerator GameOverCoroutine()
 	{
 		yield return new WaitForSeconds(2f);
+		if (JsonManager.instance)
+			JsonManager.instance.DataAdd(score); // 데이터 전달
 		showScoreText.gameObject.SetActive(false);
 		gameOverUI.SetActive(true);
 	}

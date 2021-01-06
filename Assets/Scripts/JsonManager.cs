@@ -23,7 +23,7 @@ public class JsonManager : MonoBehaviour {
 			Destroy(gameObject);
 		DataLoad();
 	}
-	public void DataAdd(int data) {	// score 값을 받아서 배열에 넣으면서 정렬
+	public void DataAdd(int data) { // score 값을 받아서 배열에 넣으면서 정렬
 		for (int i = 0; i < scoreData.scoreArray.Length; i++)
 		{
 			if (scoreData.scoreArray[i] <= data) {

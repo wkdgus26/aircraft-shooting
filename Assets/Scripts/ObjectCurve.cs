@@ -33,7 +33,8 @@ public class ObjectCurve : MonoBehaviour {
         Gizmos.color = Color.red;
         for (float ratio = 0; ratio < 1; ratio += 1f / vertexCount)
         {
-            Gizmos.DrawLine(Vector3.Lerp(curvePoint[0].position, curvePoint[1].position, ratio), Vector3.Lerp(curvePoint[1].position, curvePoint[2].position, ratio));
+            Gizmos.DrawLine(Vector3.Lerp(curvePoint[0].position, curvePoint[1].position, ratio), 
+                               Vector3.Lerp(curvePoint[1].position, curvePoint[2].position, ratio));
         }
         Gizmos.color = Color.white;
         for (int i = 0; i < curvePoint.Length; i++)

@@ -10,7 +10,6 @@ public class AircarftShooting : MonoBehaviour {
 	public MakeObjectPool objectPool;
 	public float fireRate = 0.13f;
 	float fireRateTime = 0f; // 재발사 시간
-						// Use this for initialization
 	void Start () {
 		pBullet = new GameObject[8];
 	}
